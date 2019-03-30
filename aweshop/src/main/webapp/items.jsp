@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%ArrayList<Item> items = (ArrayList<Item>) request.getAttribute("itemsList");
-	Item item = new Item()%>
+<%=ArrayList<Item> items = (ArrayList<Item>) request.getAttribute("itemsList")%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +15,15 @@
 			<th>Item Name</th>
 			<th>Quantities Available</th>
 		</tr>
-		<%for(item i:items) {
-		%>
+		<%for(Item i:items) {%>
 		<tr>
-			<td>Employee ID: <c:out value="${item.getId()}" /></td>
-			<td>Employee Pass: <c:out value="${item.getItemName()}" /></td>
-			<td>Employee Pass: <c:out value="${item.getQuantity()}" /></td>
+			<td><%=i.getId()%></td>
+			<td><%=i.getItemName()%></td>
+			<td><%=i.getQuantity()%></td>
+			<td><button>Edit</button></td>
+			<td><button>Delete</button></td>
 		</tr>
 		<%}%>
-
 	</table>
 </body>
 </html>

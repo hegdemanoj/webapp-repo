@@ -33,5 +33,35 @@ public class ItemsDAO {
 
 		return itemsList;
 	}
+	
+	public void addItem(Item item) throws SQLException {
+		item=new Item();
+		connectdb=new ConnectDb();
+		dbCon = connectdb.connectDatabase();
+		query="insert into items(ItemName,Quantity) values('"+item.getItemName()+"',"+item.getQuantity()+");";
+		stmt = dbCon.prepareStatement(query);
+		rs = stmt.executeQuery(query);
+		
+	}
+	
+	public void updateItem(Item item) throws SQLException {
+		item=new Item();
+		connectdb=new ConnectDb();
+		dbCon = connectdb.connectDatabase();
+		query="update items set ItemName='"+item.getItemName()+"',Quantity="+item.getQuantity()+" where personid="+item.getId();
+		stmt = dbCon.prepareStatement(query);
+		rs = stmt.executeQuery(query);
+		
+	}
+	
+	public void deleteItem(Item item) throws SQLException {
+		item=new Item();
+		connectdb=new ConnectDb();
+		dbCon = connectdb.connectDatabase();
+		query="delete from items where personid="+item.getId();
+		stmt = dbCon.prepareStatement(query);
+		rs = stmt.executeQuery(query);
+		
+	}
 
 }
